@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task</title>
+    <script>
+        function changeBg(id) {
+            console.log(id)
+            let divNumber = document.getElementById(id);
+            let color = document.getElementsByName('color');
+            let currentColor;
+            for (i = 0; i < color.length; i++) {
+                if (color[i].checked)
+                     currentColor = color[i].value;
+            }
+            if(currentColor == "red") {
+                divNumber.style.backgroundColor = "#ff0000"
+            }
+            if(currentColor == "blue"){
+                divNumber.style.backgroundColor = "#0000ff"
+            }
+            if (currentColor == "pink") {
+                divNumber.style.backgroundColor = "#ffc0cb"
+            }
+        }
+
+        function resetDiv(){
+            let smallDiv = document.getElementsByClassName("small-div")
+            for (i = 0; i < smallDiv.length; i++) {
+                smallDiv[i].style.backgroundColor ="#FFFFFF"    
+            }
+            for (let i = 0; i < smallDiv.length; i++) { 
+                if(i == 1){
+                    smallDiv[i].style.gridColumnStart="2";
+                    smallDiv[i].style.gridRowStart="1";
+                   }
+                   if(i == 5){
+                    smallDiv[i].style.gridColumnStart="3";
+                    smallDiv[i].style.gridRowStart="2";
+                   }
+                   if(i == 8){
+                    smallDiv[i].style.gridColumnStart="3";
+                    smallDiv[i].style.gridRowStart="3";
+                   } 
+                }
+        }
+
+        function shuffleGrid(){
+            let smallDiv = document.getElementsByClassName("small-div")
+            for (let i = 0; i < smallDiv.length; i++) { 
+                   if(i == 1){
+                    smallDiv[i].style.gridRowStart = "3";
+                   }
+                   if(i == 5){
+                    smallDiv[i].style.gridRowStart = "1"
+                   }
+                   if(i == 8){
+                    smallDiv[i].style.gridRowStart = "2"
+                   }
+                }
+        }
+    </script>
+    <style>
+        #main-div {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            background-color: gray;
+            padding: 10px;
+        }
+
+        .small-div {
+            background-color: white;
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .radio-button {
+            width: 100%;
+            text-align: center;
+        }
+        .btn-box{
+            width: 100%;
+            text-align: center;
+        }
+        .btn-1{
+            background-color: white;
+            border: 1px solid blue;
+            padding: 10px;
+            width: 100px;
+            color: blue;
+        }
+        .btn-2{
+            background-color: blue;
+            border: none;
+            padding: 10px;
+            width: 100px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="main-div">
+        <div class="small-div" id="1" onclick="changeBg(1)">1</div>
+        <div class="small-div" id="2" onclick="changeBg(2)">2</div>
+        <div class="small-div" id="3" onclick="changeBg(3)">3</div>
+        <div class="small-div" id="4" onclick="changeBg(4)">4</div>
+        <div class="small-div" id="5" onclick="changeBg(5)">5</div>
+        <div class="small-div" id="6" onclick="changeBg(6)">6</div>
+        <div class="small-div" id="7" onclick="changeBg(7)">7</div>
+        <div class="small-div" id="8" onclick="changeBg(8)">8</div>
+        <div class="small-div" id="9" onclick="changeBg(9)">9</div>
+    </div><br>
+    
+    <div class="radio-button">
+        <input type="radio" id="red" name="color" value="red" checked>
+        <label for="red">Red</label>
+        <input type="radio" id="blue" name="color" value="blue">
+        <label for="blue">Blue</label>
+        <input type="radio" id="pink" name="color" value="pink">
+        <label for="pink">Pink</label>
+    </div><br><br>
+
+    <div class = "btn-box">
+        <button class="btn-1" onclick="resetDiv()">RESET</button>
+        <button class="btn-2" onclick="shuffleGrid()">SHUFFLE</button>
+    </div>
+
+
+
+</body>
+
+</html>
